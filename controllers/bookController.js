@@ -65,15 +65,6 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
 
 // Handle book create on POST.
 exports.book_create_post =  [
-  // Convert the genre to an array.
-  (req, res, next) => {
-    if (!Array.isArray(req.body.genre)) {
-      req.body.genre =
-        typeof req.body.genre === "undefined" ? [] : [req.body.genre];
-    }
-    next();
-  },
-
   // Validate and sanitize fields.
   body("title", "Title must not be empty.")
     .trim()
